@@ -1,0 +1,42 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# Environment
+.env
+.config.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Output files
+*.json
+!requirements.txt
+
+# Test coverage
+.coverage
+htmlcov/
+
+# Exclude sample documents (per user request)
+sample_documents/
+
+# Exclude all markdown files except README.md (per user request)
+*.md
+!README.md
+
+# OS
+.DS_Store
+Thumbs.db

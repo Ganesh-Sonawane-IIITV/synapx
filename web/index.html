@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Claims Processing Agent | AI-Powered FNOL Analysis</title>
+    <meta name="description"
+        content="Autonomous AI agent for processing First Notice of Loss documents with intelligent routing and field extraction">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-top">
+                    <div class="logo">
+                        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <h1>Insurance Claims Agent</h1>
+                    </div>
+                    <button class="settings-btn" id="settingsBtn" title="Settings">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+                <p class="subtitle">AI-Powered FNOL Document Processing</p>
+                <div class="config-status" id="configStatus">
+                    <span class="status-indicator" id="statusIndicator"></span>
+                    <span id="statusText">Loading configuration...</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Upload Section -->
+            <section class="upload-section card">
+                <div class="section-header">
+                    <h2>Upload FNOL Document</h2>
+                    <p>Upload a First Notice of Loss document (PDF or TXT) for automated processing</p>
+                </div>
+
+                <div class="upload-area" id="uploadArea">
+                    <input type="file" id="fileInput" accept=".pdf,.txt" hidden>
+                    <div class="upload-content">
+                        <svg class="upload-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M9 15l3 -3l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M12 12l0 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        <h3>Drop FNOL document here or click to browse</h3>
+                        <p>Supports PDF and TXT formats</p>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-primary" id="uploadBtn">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        Process Document
+                    </button>
+                    <button class="btn btn-secondary" id="sampleBtn">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        Try Sample Document
+                    </button>
+                </div>
+            </section>
+
+            <!-- Loading State -->
+            <div class="loading-overlay" id="loadingOverlay">
+                <div class="loading-spinner"></div>
+                <p>Processing FNOL document with AI...</p>
+            </div>
+
+            <!-- Results Section -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <!-- Routing Result -->
+                <div class="card result-card">
+                    <div class="card-header">
+                        <h2>Routing Decision</h2>
+                    </div>
+                    <div class="routing-result" id="routingResult">
+                        <div class="route-badge" id="routeBadge"></div>
+                        <p class="reasoning" id="reasoning"></p>
+                    </div>
+                </div>
+
+                <!-- Extracted Fields -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Extracted Information</h2>
+                    </div>
+                    <div class="fields-grid" id="fieldsGrid"></div>
+                </div>
+
+                <!-- Missing Fields -->
+                <div class="card" id="missingFieldsCard" style="display: none;">
+                    <div class="card-header warning">
+                        <h2>Missing Fields</h2>
+                    </div>
+                    <div class="missing-fields" id="missingFields"></div>
+                </div>
+
+                <!-- JSON Output -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>JSON Output</h2>
+                        <button class="btn-icon-only" id="copyBtn" title="Copy to clipboard">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                    <pre class="json-output" id="jsonOutput"></pre>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Autonomous Insurance Claims Processing Agent | Powered by Google Gemini AI</p>
+        </footer>
+
+        <!-- Settings Modal -->
+        <div class="modal" id="settingsModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Settings</h2>
+                    <button class="modal-close" id="modalCloseBtn">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="settings-section">
+                        <h3>🤖 Gemini AI Configuration</h3>
+                        <p class="help-text">
+                            Configure your Google Gemini API key for best extraction quality.
+                            <a href="https://makersuite.google.com/app/apikey" target="_blank">Get free API key →</a>
+                        </p>
+
+                        <div class="form-group">
+                            <label for="apiKeyInput">API Key</label>
+                            <input type="password" id="apiKeyInput" placeholder="Enter your Gemini API key"
+                                class="api-key-input" />
+                            <div class="input-hint">
+                                💡 Leave blank to use pattern-based fallback extraction
+                            </div>
+                        </div>
+
+                        <div class=" button-group">
+                            <button class="btn btn-primary" id="saveApiKeyBtn">
+                                <svg class="btn-icon" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M17 21v-8H7v8M7 3v5h8" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                Save API Key
+                            </button>
+                            <button class="btn btn-secondary" id="removeApiKeyBtn">
+                                <svg class="btn-icon" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                                Remove & Use Fallback
+                            </button>
+                        </div>
+
+                        <div class="alert" id="settingsAlert" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+
+</html>
